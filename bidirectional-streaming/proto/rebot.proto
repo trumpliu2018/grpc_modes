@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package grpc.bidirectional.stream;
+
+service ChatService {
+    rpc GetChatMsg (stream ChatMessage) returns (stream ChatMessage);
+}
+
+message ChatMessage {
+    string Msg = 1;
+}
+
+// 生成 user.pb.go
+// protoc -I . --go_out=plugins=grpc:. rebot.proto
